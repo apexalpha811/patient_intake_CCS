@@ -689,6 +689,12 @@
                 <input type="text" name="social_security___seguro_social_8">
             </div>
         </div>
+        <div class="form-row">
+            <div class="form-group">
+                <label>Preferred Language / Idioma Preferido</label>
+                <input type="text" name="preferred_language___idioma_10">
+            </div>
+        </div>
     </div>
 
     <!-- Employment -->
@@ -702,6 +708,10 @@
             <div class="form-group">
                 <label>Employer / Nombre del empleador</label>
                 <input type="text" name="employer_name___nombre_del_empleador_13">
+            </div>
+            <div class="form-group">
+                <label>Work Phone / Teléfono de trabajo</label>
+                <input type="tel" name="work_phone___telefono_de_trabajo_14">
             </div>
         </div>
         <div class="form-row full">
@@ -753,6 +763,10 @@
                 <label>Insured DOB / Fecha de nacimiento</label>
                 <input type="date" name="insured_date_of_birth___fecha_de_nacimient_22">
             </div>
+            <div class="form-group">
+                <label>Relationship to Insured / Relación con el Asegurado</label>
+                <input type="text" name="relationship_to_insured___relacion_23">
+            </div>
         </div>
         <div class="form-row">
             <div class="form-group">
@@ -764,18 +778,24 @@
                 <input type="text" name="referred_by___referido_por_25">
             </div>
         </div>
+        <p class="text-muted mb-small" style="margin-top:8px;">Please provide copies of all insurance cards and your driver's license. / Por favor proporcione copias de todas las tarjetas de seguro y su licencia de conducir.</p>
     </div>
 
-    <!-- Signature 1 -->
+    <!-- Assignment of Benefits -->
     <div class="section">
+        <h2 class="section-title">Assignment of Benefits / Asignación de Beneficios</h2>
+        <div class="info-box">
+            <p>I hereby irrevocably assign the insurance benefit payment, both basic and major medical, to which I am entitled to the doctor rendering service. I understand that I am financially responsible for the charges not covered by the assignment. I authorize the doctor rendering service to release information required in the course of my examination.</p>
+            <p style="margin-top:6px;font-style:italic;">Por la presente asigno irrevocablemente el pago de prestaciones de seguro, tanto básico como médico importante, al médico que presta el servicio. Entiendo que soy financieramente responsable de los cargos no cubiertos por la asignación. Autorizo al médico que presta el servicio a divulgar la información requerida durante mi examen.</p>
+        </div>
         <div class="signature-area">
             <div class="sig-line">
                 <input type="text" class="sig-input" name="insured_signature___guardian_26">
-                <div class="sig-label">Patient Signature</div>
+                <div class="sig-label">Insured Signature / Guardian — Firma del Asegurado / Tutor</div>
             </div>
             <div class="sig-line">
                 <input type="date" class="sig-input" name="date_27">
-                <div class="sig-label">Date</div>
+                <div class="sig-label">Date / Fecha</div>
             </div>
         </div>
     </div>
@@ -854,11 +874,11 @@
         <div class="checkbox-group">
             <div class="checkbox-item">
                 <input type="checkbox" id="no_allergies" name="no_allergies___no_alergias_54">
-                <label for="no_allergies">No allergies</label>
+                <label for="no_allergies">No allergies / No alergias</label>
             </div>
             <div class="checkbox-item">
                 <input type="checkbox" id="penicillin" name="penicillin___penicilina_55">
-                <label for="penicillin">Penicillin</label>
+                <label for="penicillin">Penicillin / Penicilina</label>
             </div>
             <div class="checkbox-item">
                 <input type="checkbox" id="sulfa" name="sulfa_56">
@@ -866,39 +886,91 @@
             </div>
             <div class="checkbox-item">
                 <input type="checkbox" id="aspirin" name="aspirin___aspirina_57">
-                <label for="aspirin">Aspirin</label>
+                <label for="aspirin">Aspirin / Aspirina</label>
             </div>
             <div class="checkbox-item">
                 <input type="checkbox" id="iodine" name="iodine___yodo_58">
-                <label for="iodine">Iodine</label>
+                <label for="iodine">Iodine / Yodo</label>
             </div>
             <div class="checkbox-item">
                 <input type="checkbox" id="latex" name="latex_59">
-                <label for="latex">Latex</label>
+                <label for="latex">Latex / Látex</label>
+            </div>
+            <div class="checkbox-item">
+                <input type="checkbox" id="soy" name="soy___soya_60">
+                <label for="soy">Soy / Soya</label>
+            </div>
+            <div class="checkbox-item">
+                <input type="checkbox" id="eggs" name="eggs___huevos_61">
+                <label for="eggs">Eggs / Huevos</label>
+            </div>
+            <div class="checkbox-item">
+                <input type="checkbox" id="other_allergy" name="other_allergy___otra_62">
+                <label for="other_allergy">Other / Otra</label>
             </div>
         </div>
         <div class="form-row full">
             <div class="form-group">
-                <label>Describe allergic reactions</label>
+                <label>If you have allergies, describe reactions / Si tiene alergias, describa reacciones</label>
                 <input type="text" name="if_you_have_allergies__describe_reactions_63">
             </div>
         </div>
     </div>
 
-    <!-- Medical Conditions -->
+    <!-- Medical History -->
     <div class="section">
-        <h2 class="section-title">Medical Conditions / Condiciones Médicas</h2>
-        <p class="text-muted mb-small">Check all that apply:</p>
+        <h2 class="section-title">Medical History / Historia Médica</h2>
+        <p class="text-muted mb-small">Select all that apply / Marque todos los que correspondan:</p>
         <div class="checkbox-group">
-            <div class="checkbox-item"><input type="checkbox" id="acid_reflux" name="acid_reflux_64"><label for="acid_reflux">Acid reflux</label></div>
-            <div class="checkbox-item"><input type="checkbox" id="cancer" name="cancer_97"><label for="cancer">Cancer</label></div>
-            <div class="checkbox-item"><input type="checkbox" id="diabetes" name="diabetes_98"><label for="diabetes">Diabetes</label></div>
-            <div class="checkbox-item"><input type="checkbox" id="heart_attack" name="heart_attack_71"><label for="heart_attack">Heart attack</label></div>
-            <div class="checkbox-item"><input type="checkbox" id="high_bp" name="high_blood_pressure_95"><label for="high_bp">High BP</label></div>
-            <div class="checkbox-item"><input type="checkbox" id="stroke" name="stroke___paralysis_73"><label for="stroke">Stroke</label></div>
-            <div class="checkbox-item"><input type="checkbox" id="arthritis" name="arthritis_74"><label for="arthritis">Arthritis</label></div>
-            <div class="checkbox-item"><input type="checkbox" id="asthma" name="asthma_79"><label for="asthma">Asthma</label></div>
-            <div class="checkbox-item"><input type="checkbox" id="other_condition" name="other_88"><label for="other_condition">Other</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="acid_reflux" name="acid_reflux_64"><label for="acid_reflux">Acid reflux / Reflujo</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="anemia" name="anemia_65"><label for="anemia">Anemia</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="arthritis" name="arthritis_66"><label for="arthritis">Arthritis / Artritis</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="asthma" name="asthma_67"><label for="asthma">Asthma / Asma</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="bleeding_disorder" name="bleeding_disorder_68"><label for="bleeding_disorder">Bleeding disorder</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="blood_clots" name="blood_clots_69"><label for="blood_clots">Blood clots</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="blood_transfusion" name="blood_transfusion_70"><label for="blood_transfusion">Blood transfusion</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="cancer" name="cancer_71"><label for="cancer">Cancer / Cáncer</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="chest_pain" name="chest_pain_72"><label for="chest_pain">Chest pain / Angina</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="chronic_anxiety" name="chronic_anxiety_73"><label for="chronic_anxiety">Chronic anxiety</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="chronic_cough" name="chronic_cough_74"><label for="chronic_cough">Chronic cough</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="chronic_lung" name="chronic_lung_75"><label for="chronic_lung">Chronic lung disease</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="chronic_sinusitis" name="chronic_sinusitis_76"><label for="chronic_sinusitis">Chronic sinusitis</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="cirrhosis" name="cirrhosis_77"><label for="cirrhosis">Cirrhosis of liver</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="colon_cancer" name="colon_cancer_78"><label for="colon_cancer">Colon cancer</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="colon_polyps" name="colon_polyps_79"><label for="colon_polyps">Colon polyps</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="crohns" name="crohns_80"><label for="crohns">Crohn's disease</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="diabetes" name="diabetes_81"><label for="diabetes">Diabetes</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="diverticulitis" name="diverticulitis_82"><label for="diverticulitis">Diverticulitis</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="emphysema" name="emphysema_83"><label for="emphysema">Emphysema / Enfisema</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="glaucoma" name="glaucoma_84"><label for="glaucoma">Glaucoma</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="gout" name="gout_85"><label for="gout">Gout / Gota</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="heart_attack" name="heart_attack_86"><label for="heart_attack">Heart attack / Ataque</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="heart_failure" name="heart_failure_87"><label for="heart_failure">Heart failure</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="heart_murmur" name="heart_murmur_88"><label for="heart_murmur">Heart murmur</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="hepatitis" name="hepatitis_89"><label for="hepatitis">Hepatitis</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="hernia" name="hernia_90"><label for="hernia">Hiatal / groin hernia</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="high_bp" name="high_bp_91"><label for="high_bp">High blood pressure</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="hiv" name="hiv_92"><label for="hiv">HIV or AIDS / VIH</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="irregular_heartbeat" name="irregular_heartbeat_93"><label for="irregular_heartbeat">Irregular heartbeat</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="ibs" name="ibs_94"><label for="ibs">Irritable bowel syndrome</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="kidney_disease" name="kidney_disease_95"><label for="kidney_disease">Kidney disease / failure</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="kidney_infection" name="kidney_infection_96"><label for="kidney_infection">Kidney infection</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="kidney_stones" name="kidney_stones_97"><label for="kidney_stones">Kidney stones</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="liver_disease" name="liver_disease_98"><label for="liver_disease">Liver disease</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="lupus" name="lupus_99"><label for="lupus">Lupus</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="multiple_sclerosis" name="multiple_sclerosis_100"><label for="multiple_sclerosis">Multiple sclerosis</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="pancreatitis" name="pancreatitis_101"><label for="pancreatitis">Pancreatitis</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="parkinsons" name="parkinsons_102"><label for="parkinsons">Parkinson's disease</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="phlebitis" name="phlebitis_103"><label for="phlebitis">Phlebitis / Flebitis</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="polio" name="polio_104"><label for="polio">Polio</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="radiation" name="radiation_105"><label for="radiation">Radiation therapy</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="seizures" name="seizures_106"><label for="seizures">Seizures / Convulsiones</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="sleep_apnea" name="sleep_apnea_107"><label for="sleep_apnea">Sleep apnea</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="stroke" name="stroke_108"><label for="stroke">Stroke / paralysis</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="thyroid" name="thyroid_109"><label for="thyroid">Thyroid disease</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="tuberculosis" name="tuberculosis_110"><label for="tuberculosis">Tuberculosis</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="ulcerative_colitis" name="ulcerative_colitis_111"><label for="ulcerative_colitis">Ulcerative colitis</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="other_condition" name="other_condition_112"><label for="other_condition">Other / Otro</label></div>
         </div>
         <div class="form-row full">
             <div class="form-group">
@@ -908,53 +980,90 @@
         </div>
     </div>
 
-    <!-- ========== PAGE 3: SURGERIES & SOCIAL HISTORY ========== -->
+    <!-- ========== PAGE 3: ILLNESSES, HABITS, HOSPITALIZATIONS ========== -->
     <div class="section page-break">
-        <h2 class="section-title">Previous Surgeries / Cirugías Previas</h2>
+        <h2 class="section-title">Serious Illnesses &amp; Injuries / Enfermedades y Lesiones Graves</h2>
         <table>
             <thead>
                 <tr>
-                    <th>Date</th>
-                    <th>Hospital</th>
-                    <th>Reason & Outcome</th>
+                    <th>Name / Nombre</th>
+                    <th>Date / Fecha</th>
+                    <th>Outcome / Resultado</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td><input type="text" name="date___fecha_row_130"></td>
-                    <td><input type="text" name="hospital_name___nombre_del_hospital_row_131"></td>
-                    <td><input type="text" name="reason_and_outcome___razon_y_resultado_row_132"></td>
+                    <td><input type="text" name="illness_name_row_114"></td>
+                    <td><input type="text" name="illness_date_row_115"></td>
+                    <td><input type="text" name="illness_outcome_row_116"></td>
                 </tr>
                 <tr>
-                    <td><input type="text" name="date___fecha_row_133"></td>
-                    <td><input type="text" name="hospital_name___nombre_del_hospital_row_134"></td>
-                    <td><input type="text" name="reason_and_outcome___razon_y_resultado_row_135"></td>
+                    <td><input type="text" name="illness_name_row_117"></td>
+                    <td><input type="text" name="illness_date_row_118"></td>
+                    <td><input type="text" name="illness_outcome_row_119"></td>
                 </tr>
                 <tr>
-                    <td><input type="text" name="date___fecha_row_136"></td>
-                    <td><input type="text" name="hospital_name___nombre_del_hospital_row_137"></td>
-                    <td><input type="text" name="reason_and_outcome___razon_y_resultado_row_138"></td>
+                    <td><input type="text" name="illness_name_row_120"></td>
+                    <td><input type="text" name="illness_date_row_121"></td>
+                    <td><input type="text" name="illness_outcome_row_122"></td>
                 </tr>
                 <tr>
-                    <td><input type="text" name="date___fecha_row_139"></td>
-                    <td><input type="text" name="hospital_name___nombre_del_hospital_row_140"></td>
-                    <td><input type="text" name="reason_and_outcome___razon_y_resultado_row_141"></td>
-                </tr>
-                <tr>
-                    <td><input type="text" name="date___fecha_row_142"></td>
-                    <td><input type="text" name="hospital_name___nombre_del_hospital_row_143"></td>
-                    <td><input type="text" name="reason_and_outcome___razon_y_resultado_row_144"></td>
+                    <td><input type="text" name="illness_name_row_123"></td>
+                    <td><input type="text" name="illness_date_row_124"></td>
+                    <td><input type="text" name="illness_outcome_row_125"></td>
                 </tr>
             </tbody>
         </table>
     </div>
 
-    <!-- Social History -->
+    <!-- Hospitalizations -->
     <div class="section">
-        <h2 class="section-title">Social History / Historia Social</h2>
+        <h2 class="section-title">Hospitalizations / Hospitalizaciones</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Date / Fecha</th>
+                    <th>Hospital Name / Nombre del Hospital</th>
+                    <th>Reason and Outcome / Razón y Resultado</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><input type="text" name="hosp_date_row_130"></td>
+                    <td><input type="text" name="hosp_name_row_131"></td>
+                    <td><input type="text" name="hosp_reason_row_132"></td>
+                </tr>
+                <tr>
+                    <td><input type="text" name="hosp_date_row_133"></td>
+                    <td><input type="text" name="hosp_name_row_134"></td>
+                    <td><input type="text" name="hosp_reason_row_135"></td>
+                </tr>
+                <tr>
+                    <td><input type="text" name="hosp_date_row_136"></td>
+                    <td><input type="text" name="hosp_name_row_137"></td>
+                    <td><input type="text" name="hosp_reason_row_138"></td>
+                </tr>
+                <tr>
+                    <td><input type="text" name="hosp_date_row_139"></td>
+                    <td><input type="text" name="hosp_name_row_140"></td>
+                    <td><input type="text" name="hosp_reason_row_141"></td>
+                </tr>
+                <tr>
+                    <td><input type="text" name="hosp_date_row_142"></td>
+                    <td><input type="text" name="hosp_name_row_143"></td>
+                    <td><input type="text" name="hosp_reason_row_144"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Health Habits -->
+    <div class="section">
+        <h2 class="section-title">Health Habits / Hábitos de Salud</h2>
+        <p class="text-muted mb-small">Check which substances you use and describe how much you use. / Marque qué sustancias usa y describa cuánto consume.</p>
         <div class="form-row full">
             <div class="form-group">
-                <label>Caffeine Use</label>
+                <label>Caffeine / Cafeína</label>
                 <input type="text" name="caffeine___cafeina_126">
             </div>
         </div>
@@ -966,13 +1075,13 @@
         </div>
         <div class="form-row full">
             <div class="form-group">
-                <label>Alcohol Use / Uso de alcohol</label>
+                <label>Alcohol Use / Uso de Alcohol</label>
                 <input type="text" name="alcohol_use___uso_de_alcohol_128">
             </div>
         </div>
         <div class="form-row full">
             <div class="form-group">
-                <label>Drug Use</label>
+                <label>Drugs / Drogas (cocaine, marijuana, speed, pain killers, etc.)</label>
                 <input type="text" name="drugs___drogas__cocaine__marijuana__speed_129">
             </div>
         </div>

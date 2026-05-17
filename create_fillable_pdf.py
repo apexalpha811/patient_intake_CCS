@@ -313,12 +313,16 @@ def build():
         ("Email", "Correo electrónico", "text"),
         ("Social Security", "Seguro Social", "text"),
     ])
+    p.draw_field_row([
+        ("Preferred Language", "Idioma Preferido", "text"),
+    ])
 
     # Employment
     p.draw_section("Employment", "Empleo")
     p.draw_field_row([
         ("Occupation", "Ocupación", "text"),
         ("Employer", "Nombre del empleador", "text"),
+        ("Work Phone", "Teléfono de trabajo", "text"),
     ])
     p.draw_full_field("Work Address", "Dirección de empleador")
 
@@ -339,18 +343,29 @@ def build():
     p.draw_field_row([
         ("Insured SSN", "Seguro Social", "text"),
         ("Insured DOB", "Fecha de nacimiento", "text"),
+        ("Relationship to Insured", "Relación con el Asegurado", "text"),
     ])
     p.draw_field_row([
         ("Primary Doctor", "Doctor de cabecera", "text"),
         ("Referred By", "Referido por", "text"),
     ])
+
+    # Assignment of Benefits
+    p.draw_section("Assignment of Benefits", "Asignación de Beneficios")
+    p.draw_paragraph(
+        "I hereby irrevocably assign the insurance benefit payment, both basic and major medical, to which I am entitled to the doctor rendering service. I understand that I am financially responsible for the charges not covered by the assignment. I authorize the doctor rendering service to release information required in the course of my examination."
+    )
+    p.draw_paragraph(
+        "Por la presente asigno irrevocablemente el pago de prestaciones de seguro, tanto básico como médico importante, al médico que presta el servicio. Entiendo que soy financieramente responsable de los cargos no cubiertos por la asignación. Autorizo al médico que presta el servicio a divulgar la información requerida durante mi examen.",
+        font=DISPLAY_ITALIC,
+    )
     p.draw_signature_pair()
 
     # Medications
     p.draw_section("Current Medications", "Medicamentos Actuales")
     p.draw_table(
         ["Prescription", "Dose/Frequency", "OTC/Vitamins", "Dose/Frequency"],
-        rows=7,
+        rows=6,
     )
 
     # Vital Signs
@@ -358,73 +373,115 @@ def build():
     p.draw_field_row([
         ("Height", "Estatura", "text"),
         ("Weight", "Peso", "text"),
-        ("Blood Pressure", "Presión arterial", "text"),
-    ])
-    p.draw_field_row([
-        ("Pulse", "Pulso", "text"),
-        ("Temperature", "Temperatura", "text"),
-        ("O2 Sat", "Saturación O2", "text"),
     ])
 
     # Allergies
     p.draw_section("Allergies", "Alergias")
     p.draw_checkboxes([
-        ("NKDA", "Ninguna conocida"),
+        ("No allergies", "No alergias"),
         ("Penicillin", "Penicilina"),
         ("Sulfa", "Sulfa"),
-        ("Latex", "Látex"),
-        ("Codeine", "Codeína"),
         ("Aspirin", "Aspirina"),
         ("Iodine", "Yodo"),
+        ("Latex", "Látex"),
+        ("Soy", "Soya"),
+        ("Eggs", "Huevos"),
         ("Other", "Otra"),
     ], columns=4)
-    p.draw_full_field("Allergy details", "Detalles de alergia")
+    p.draw_full_field("If allergies, describe reactions",
+                      "Si tiene alergias, describa reacciones")
 
-    # Medical Conditions
-    p.draw_section("Medical Conditions", "Condiciones Médicas")
+    # Medical History
+    p.draw_section("Medical History", "Historia Médica")
     p.draw_checkboxes([
-        ("Diabetes", "Diabetes"),
-        ("Hypertension", "Hipertensión"),
-        ("Heart Disease", "Enfermedad cardíaca"),
+        ("Acid reflux", "Reflujo"),
+        ("Anemia", "Anemia"),
+        ("Arthritis", "Artritis"),
         ("Asthma", "Asma"),
-        ("COPD", "EPOC"),
+        ("Bleeding disorder", "Trast. hemorrág."),
+        ("Blood clots", "Coágulos"),
+        ("Blood transfusion", "Transfusión"),
         ("Cancer", "Cáncer"),
-        ("Stroke", "Accidente cerebro."),
+        ("Chest pain", "Dolor torácico"),
+        ("Chronic anxiety", "Ansiedad crónica"),
+        ("Chronic cough", "Tos crónica"),
+        ("Chronic lung disease", "Enf. pulm. crón."),
+        ("Chronic sinusitis", "Sinusitis crón."),
+        ("Cirrhosis", "Cirrosis"),
+        ("Colon cancer", "Cáncer de colon"),
+        ("Colon polyps", "Pólipos"),
+        ("Crohn's disease", "Crohn"),
+        ("Diabetes", "Diabetes"),
+        ("Diverticulitis", "Diverticulitis"),
+        ("Emphysema", "Enfisema"),
+        ("Glaucoma", "Glaucoma"),
+        ("Gout", "Gota"),
+        ("Heart attack", "Ataque cardíaco"),
+        ("Heart failure", "Insuf. cardíaca"),
+        ("Heart murmur", "Soplo cardíaco"),
+        ("Hepatitis", "Hepatitis"),
+        ("Hernia", "Hernia"),
+        ("High blood pressure", "Hipertensión"),
+        ("HIV or AIDS", "VIH"),
+        ("Irregular heartbeat", "Arritmia"),
+        ("Irritable bowel", "Intestino irrit."),
+        ("Kidney disease", "Enf. renal"),
+        ("Kidney infection", "Infección renal"),
+        ("Kidney stones", "Cálculos renales"),
+        ("Liver disease", "Enf. hepática"),
+        ("Lupus", "Lupus"),
+        ("Multiple sclerosis", "Esclerosis múlt."),
+        ("Pancreatitis", "Pancreatitis"),
+        ("Parkinson's", "Parkinson"),
+        ("Phlebitis", "Flebitis"),
+        ("Polio", "Polio"),
+        ("Radiation therapy", "Radioterapia"),
         ("Seizures", "Convulsiones"),
-        ("Kidney Disease", "Enfermedad renal"),
-        ("Liver Disease", "Enf. hepática"),
-        ("Thyroid", "Tiroides"),
-        ("Bleeding Disorder", "Trastorno hemorrág."),
+        ("Sleep apnea", "Apnea del sueño"),
+        ("Stroke", "Accidente cereb."),
+        ("Thyroid disease", "Tiroides"),
+        ("Tuberculosis", "Tuberculosis"),
+        ("Ulcerative colitis", "Colitis ulcer."),
+        ("Other", "Otro"),
     ], columns=4)
+    p.draw_full_field("Other conditions or comments",
+                      "Otras condiciones o comentarios")
 
-    # Previous Surgeries
-    p.draw_section("Previous Surgeries", "Cirugías Previas")
-    for _ in range(3):
-        p.draw_field_row([
-            ("Procedure", "Procedimiento", "text"),
-            ("Year", "Año", "text"),
-            ("Surgeon/Hospital", "Cirujano/Hospital", "text"),
-        ])
-
-    # Social History
-    p.draw_section("Social History", "Historia Social")
-    p.draw_field_row([
-        ("Alcohol Use", "Consumo de alcohol", "text"),
-        ("Tobacco Use", "Uso de tabaco", "text"),
-        ("Recreational Drugs", "Drogas recreativas", "text"),
-    ])
-
-    # HIPAA Acknowledgement
-    p.draw_section("HIPAA Privacy Acknowledgement",
-                   "Reconocimiento de Privacidad HIPAA")
-    p.draw_paragraph(
-        "I acknowledge receipt of the Notice of Privacy Practices and "
-        "consent to the use and disclosure of my health information for "
-        "treatment, payment, and healthcare operations. / Reconozco haber "
-        "recibido el Aviso de Prácticas de Privacidad y consiento al uso y "
-        "divulgación de mi información médica para tratamiento, pago y "
-        "operaciones de atención médica."
+    # Serious Illnesses & Injuries
+    p.draw_section("Serious Illnesses & Injuries",
+                   "Enfermedades y Lesiones Graves")
+    p.draw_table(
+        ["Name / Nombre", "Date / Fecha", "Outcome / Resultado"],
+        rows=4,
     )
+
+    # Health Habits
+    p.draw_section("Health Habits", "Hábitos de Salud")
+    p.draw_full_field("Caffeine", "Cafeína")
+    p.draw_full_field("Tobacco", "Tabaco")
+    p.draw_full_field("Alcohol Use", "Uso de Alcohol")
+    p.draw_full_field("Drugs (cocaine, marijuana, etc.)",
+                      "Drogas (cocaína, marihuana, etc.)")
+
+    # Hospitalizations
+    p.draw_section("Hospitalizations", "Hospitalizaciones")
+    p.draw_table(
+        ["Date / Fecha", "Hospital", "Reason & Outcome / Razón y Resultado"],
+        rows=4,
+    )
+
+    # HIPAA / Consent Acknowledgement
+    p.draw_section("Patient Consent & Privacy Acknowledgement",
+                   "Consentimiento del Paciente y Aviso de Privacidad")
+    p.draw_paragraph(
+        "I acknowledge receipt of the Notice of Privacy Practices and consent to the use and disclosure of my health information for treatment, payment, and healthcare operations. As a patient or legal guardian, I agree to pay for all services rendered and verify that the information on this form is true and correct."
+    )
+    p.draw_paragraph(
+        "Reconozco haber recibido el Aviso de Prácticas de Privacidad y consiento al uso y divulgación de mi información médica para tratamiento, pago y operaciones de atención médica. Como paciente o tutor legal, acepto pagar todos los servicios prestados y verifico que la información de este formulario es verdadera y correcta.",
+        font=DISPLAY_ITALIC,
+    )
+    p.draw_full_field("Restrictions requested, if any",
+                      "Restricciones solicitadas, si hay")
     p.draw_signature_pair()
 
     p.save()
