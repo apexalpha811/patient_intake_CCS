@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CCS Patient Intake Form</title>
+    <style>
+        /* ========== FONTS ========== */
+        @font-face {
+            font-family: "Fraunces";
+            src: url("Design System/fonts/fraunces-500.woff2") format("woff2");
+            font-weight: 500;
+        }
+        @font-face {
+            font-family: "Fraunces";
+            src: url("Design System/fonts/fraunces-600.woff2") format("woff2");
+            font-weight: 600;
+        }
+        @font-face {
+            font-family: "Inter";
+            src: url("Design System/fonts/inter-400.woff2") format("woff2");
+            font-weight: 400;
+        }
+        @font-face {
+            font-family: "Inter";
+            src: url("Design System/fonts/inter-500.woff2") format("woff2");
+            font-weight: 500;
+        }
+        @font-face {
+            font-family: "Inter";
+            src: url("Design System/fonts/inter-600.woff2") format("woff2");
+            font-weight: 600;
+        }
+
+        /* ========== VARIABLES ========== */
+        :root {
+            --pelorous: #4bbec6;
+            --pelorous-darker: #1e4c4f;
+            --tan: #d4af8a;
+            --spring-wood: #f9f7f4;
+            --white: #ffffff;
+            --neutral-darkest: #020304;
+            --neutral-dark: #4d4e4f;
+            --font-display: "Fraunces", serif;
+            --font-body: "Inter", system-ui, -apple-system, sans-serif;
+            --radius-button: 6px;
+            --radius-card: 8px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        body {
+            font-family: var(--font-body);
+            font-size: 14px;
+            line-height: 1.5;
+            color: var(--neutral-darkest);
+            background: #f5f5f5;
+        }
+
+        /* ========== MAIN CONTAINER ========== */
+        .container {
+            max-width: 8.5in;
+            margin: 0 auto;
+            background: var(--white);
+            padding: 0.3in;
+        }
+
+        @media screen {
+            .container {
+                margin: 10px auto;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+                padding: 20px;
+            }
+        }
+
+        @media print {
+            .container {
+                margin: 0;
+                padding: 0.25in;
+                max-width: 100%;
+                box-shadow: none;
+                background: white;
+                width: 8.5in;
+            }
+            body {
+                background: white;
+                margin: 0;
+                padding: 0;
+            }
+        }
+
+        /* ========== HEADER ========== */
+        .header {
+            display: grid;
+            grid-template-columns: 180px 1fr 130px;
+            gap: 15px;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--pelorous);
+        }
+
+        .logo {
+            height: 55px;
+            width: auto;
+            max-width: 180px;
+            object-fit: contain;
+        }
+
+        .header-title {
+            text-align: center;
+        }
+
+        .header-title h1 {
+            font-family: var(--font-display);
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--pelorous-darker);
+            margin: 0 0 2px 0;
+            line-height: 1.1;
+        }
+
+        .header-title p {
+            font-family: var(--font-display);
+            font-style: italic;
+            color: var(--tan);
+            font-size: 11px;
+            margin: 0;
+        }
+
+        .header-contact {
+            font-size: 8px;
+            color: var(--neutral-dark);
+            text-align: right;
+            line-height: 1.3;
+        }
+
+        .header-contact p {
+            margin: 0;
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                grid-template-columns: 1fr;
+                gap: 10px;
+                text-align: center;
+            }
+            .header-contact {
+                text-align: center;
+            }
+            .logo {
+                justify-self: center;
+            }
+        }
+
+        /* ========== SECTIONS ========== */
+        .section {
+            margin: 10px 0;
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--pelorous-darker);
+            margin: 8px 0 6px 0;
+            padding-bottom: 3px;
+            border-bottom: 1px solid rgba(2,3,4,0.15);
+            line-height: 1.2;
+        }
+
+        /* ========== FORM GROUPS ========== */
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 10px;
+            margin-bottom: 8px;
+        }
+
+        .form-row.full {
+            grid-template-columns: 1fr;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            font-size: 9px;
+            font-weight: 600;
+            color: var(--neutral-darkest);
+            margin-bottom: 2px;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+            line-height: 1;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group input[type="tel"],
+        .form-group input[type="date"],
+        .form-group textarea {
+            font-family: var(--font-body);
+            font-size: 11px;
+            padding: 5px 8px;
+            border: 1px solid rgba(2,3,4,0.15);
+            border-radius: var(--radius-card);
+            background: var(--spring-wood);
+            color: var(--neutral-darkest);
+            line-height: 1.3;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--pelorous);
+            box-shadow: 0 0 0 2px rgba(75,190,198,0.1);
+        }
+
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 8px;
+            }
+        }
+
+        /* ========== CHECKBOXES ========== */
+        .checkbox-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 6px;
+            margin-bottom: 8px;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .checkbox-item input[type="checkbox"] {
+            width: 14px;
+            height: 14px;
+            cursor: pointer;
+            accent-color: var(--pelorous);
+            flex-shrink: 0;
+        }
+
+        .checkbox-item label {
+            font-size: 11px;
+            cursor: pointer;
+            color: var(--neutral-darkest);
+            margin: 0;
+            line-height: 1.2;
+        }
+
+        /* ========== TABLES ========== */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 8px 0;
+            font-size: 10px;
+        }
+
+        table thead {
+            background: var(--pelorous-darker);
+            color: white;
+        }
+
+        table th {
+            padding: 4px 6px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 9px;
+            border: 1px solid var(--pelorous-darker);
+        }
+
+        table td {
+            padding: 3px 4px;
+            border: 1px solid rgba(2,3,4,0.15);
+            background: var(--spring-wood);
+        }
+
+        table input {
+            width: 100%;
+            padding: 3px 4px;
+            border: 1px solid rgba(2,3,4,0.15);
+            font-size: 10px;
+            font-family: var(--font-body);
+            min-height: 18px;
+        }
+
+        /* ========== SIGNATURE AREAS ========== */
+        .signature-area {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 15px 0;
+        }
+
+        .sig-line {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sig-input {
+            border: none;
+            border-bottom: 1px solid var(--neutral-darkest);
+            padding: 0 0 4px 0;
+            margin-bottom: 3px;
+            font-size: 11px;
+            min-height: 20px;
+        }
+
+        .sig-label {
+            font-size: 8px;
+            text-align: center;
+            color: var(--neutral-dark);
+            line-height: 1;
+        }
+
+        @media (max-width: 768px) {
+            .signature-area {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+        }
+
+        /* ========== INFO BOXES ========== */
+        .info-box {
+            background: var(--pelorous-darker);
+            color: white;
+            padding: 10px;
+            border-radius: var(--radius-card);
+            margin: 10px 0;
+            font-size: 10px;
+            line-height: 1.4;
+        }
+
+        .info-box p {
+            margin: 4px 0;
+        }
+
+        /* ========== BUTTONS ========== */
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin: 20px 0 0 0;
+            justify-content: center;
+        }
+
+        button {
+            font-family: var(--font-body);
+            font-size: 12px;
+            font-weight: 600;
+            padding: 10px 20px;
+            border-radius: var(--radius-button);
+            border: none;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: all 0.2s;
+        }
+
+        .btn-primary {
+            background: var(--pelorous);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--tan);
+            color: var(--pelorous-darker);
+            transform: translateY(-1px);
+        }
+
+        @media (max-width: 768px) {
+            .button-group {
+                flex-direction: column;
+                gap: 8px;
+            }
+            button {
+                width: 100%;
+            }
+        }
+
+        /* ========== PAGE BREAKS ========== */
+        .page-break {
+            margin-top: 0;
+            padding-top: 0;
+        }
+
+        @media screen {
+            .page-break {
+                border-top: 3px dashed var(--pelorous);
+                margin-top: 20px;
+                padding-top: 20px;
+            }
+        }
+
+        @media print {
+            .page-break {
+                page-break-before: auto;
+                margin-top: 0;
+                padding-top: 0;
+            }
+        }
+
+        /* ========== PRINT PAGE RULES ========== */
+        @page {
+            size: 8.5in 11in;
+            margin: 0.35in 0.4in 0.35in 0.4in;
+            padding: 0;
+            background: white;
+        }
+
+        /* ========== PRINT STYLES ========== */
+        @media print {
+            .button-group {
+                display: none !important;
+            }
+
+            .container {
+                margin: 0 !important;
+                padding: 0.15in 0.2in !important;
+                max-width: 100% !important;
+                width: 100% !important;
+                box-shadow: none !important;
+                background: white !important;
+            }
+
+            p {
+                margin: 0;
+                line-height: 1.2;
+                orphans: 3;
+                widows: 3;
+            }
+
+            body {
+                background: white !important;
+            }
+
+            .section {
+                margin: 10px 0;
+                page-break-inside: auto;
+            }
+
+            .section-title {
+                page-break-after: avoid;
+                font-size: 13px !important;
+                margin: 8px 0 6px 0 !important;
+            }
+
+            .form-row {
+                page-break-inside: auto;
+                display: grid !important;
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)) !important;
+                gap: 10px !important;
+                margin-bottom: 8px !important;
+            }
+
+            .form-row.full {
+                grid-template-columns: 1fr !important;
+            }
+
+            .form-group {
+                display: flex !important;
+                flex-direction: column !important;
+            }
+
+            .form-group label {
+                font-size: 9px !important;
+                font-weight: 600 !important;
+                color: var(--neutral-darkest) !important;
+                margin-bottom: 2px !important;
+                text-transform: uppercase !important;
+                letter-spacing: 0.3px !important;
+                line-height: 1 !important;
+            }
+
+            .form-group input[type="text"],
+            .form-group input[type="email"],
+            .form-group input[type="tel"],
+            .form-group input[type="date"],
+            .form-group textarea {
+                font-family: var(--font-body) !important;
+                font-size: 11px !important;
+                padding: 5px 8px !important;
+                border: 1px solid rgba(2,3,4,0.15) !important;
+                border-radius: var(--radius-card) !important;
+                background: var(--spring-wood) !important;
+                color: var(--neutral-darkest) !important;
+                line-height: 1.3 !important;
+                min-height: 20px !important;
+            }
+
+            .checkbox-group {
+                display: grid !important;
+                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)) !important;
+                gap: 6px !important;
+                margin-bottom: 8px !important;
+            }
+
+            .checkbox-item label {
+                font-size: 11px !important;
+                color: var(--neutral-darkest) !important;
+                line-height: 1.2 !important;
+            }
+
+            table {
+                page-break-inside: auto;
+                width: 100% !important;
+                font-size: 10px !important;
+            }
+
+            table th,
+            table td {
+                padding: 4px 6px !important;
+            }
+
+            thead {
+                display: table-header-group;
+            }
+
+            tfoot {
+                display: table-footer-group;
+            }
+
+            .header {
+                page-break-after: avoid;
+            }
+
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                color-adjust: exact !important;
+            }
+
+            html, body {
+                margin: 0 !important;
+                padding: 0 !important;
+                background: white !important;
+                width: 100% !important;
+                height: auto !important;
+            }
+        }
+
+        /* ========== MOBILE ========== */
+        @media (max-width: 480px) {
+            .container {
+                padding: 15px;
+            }
+
+            .header {
+                grid-template-columns: 1fr;
+                gap: 8px;
+                margin-bottom: 12px;
+            }
+
+            .logo {
+                height: 35px;
+                justify-self: center;
+            }
+
+            .header-title h1 {
+                font-size: 16px;
+            }
+
+            .header-title p {
+                font-size: 10px;
+            }
+
+            .section-title {
+                font-size: 12px;
+            }
+
+            .form-group label {
+                font-size: 8px;
+            }
+
+            .form-group input {
+                font-size: 10px;
+                padding: 4px 6px;
+            }
+
+            .checkbox-item label {
+                font-size: 10px;
+            }
+
+            table {
+                font-size: 9px;
+            }
+
+            table th {
+                font-size: 8px;
+                padding: 3px;
+            }
+
+            table td {
+                padding: 2px 3px;
+            }
+        }
+
+        /* ========== UTILITIES ========== */
+        .text-muted {
+            color: var(--neutral-dark);
+            font-size: 10px;
+        }
+
+        .mb-0 { margin-bottom: 0; }
+        .mb-small { margin-bottom: 4px; }
+        .mt-small { margin-top: 4px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- ========== PAGE 1: PATIENT INFO ========== -->
+    <div class="header">
+        <img src="Design System/assets/logo/culver-city-logo.png" alt="Culver City Surgical" class="logo">
+        <div class="header-title">
+            <h1>Patient Intake Form</h1>
+            <p>Formulario de Admisión del Paciente</p>
+        </div>
+        <div class="header-contact">
+            <p><strong>Culver City Surgical</strong></p>
+            <p>Suite 702, Culver City</p>
+            <p>CA 90230</p>
+            <p>(310) 837-3834</p>
+        </div>
+    </div>
+
+    <!-- Personal Information -->
+    <div class="section page-break">
+        <h2 class="section-title">Personal Information / Información Personal</h2>
+        <div class="form-row">
+            <div class="form-group">
+                <label>Name / Nombre (Last, First, Middle)</label>
+                <input type="text" name="name___nombre__last__first__middle_1">
+            </div>
+            <div class="form-group">
+                <label>Date of Birth / Fecha de nacimiento</label>
+                <input type="date" name="date_of_birth___fecha_de_nacimiento_3">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group">
+                <label>Sex / Sexo</label>
+                <input type="text" name="sex___sexo_4" placeholder="M/F">
+            </div>
+            <div class="form-group">
+                <label>Age / Edad</label>
+                <input type="text" name="age___edad_5">
+            </div>
+            <div class="form-group">
+                <label>Marital Status / Estado civil</label>
+                <input type="text" name="marital_status___estado_civil__s___m___d_6" placeholder="S/M/D/W">
+            </div>
+        </div>
+        <div class="form-row full">
+            <div class="form-group">
+                <label>Home Address / Dirección</label>
+                <input type="text" name="home_address___direccion__street__city__st_11">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group">
+                <label>Cell Phone / Teléfono celular</label>
+                <input type="tel" name="cell_phone___telefono_celular_7">
+            </div>
+            <div class="form-group">
+                <label>Email / Correo electrónico</label>
+                <input type="email" name="email___correo_electronico_9">
+            </div>
+            <div class="form-group">
+                <label>Social Security / Seguro Social</label>
+                <input type="text" name="social_security___seguro_social_8">
+            </div>
+        </div>
+    </div>
+
+    <!-- Employment -->
+    <div class="section">
+        <h2 class="section-title">Employment / Empleo</h2>
+        <div class="form-row">
+            <div class="form-group">
+                <label>Occupation / Ocupación</label>
+                <input type="text" name="occupation___ocupacion_12">
+            </div>
+            <div class="form-group">
+                <label>Employer / Nombre del empleador</label>
+                <input type="text" name="employer_name___nombre_del_empleador_13">
+            </div>
+        </div>
+        <div class="form-row full">
+            <div class="form-group">
+                <label>Work Address / Dirección de empleador</label>
+                <input type="text" name="work_address___direccion_de_empleador_15">
+            </div>
+        </div>
+    </div>
+
+    <!-- Emergency Contact -->
+    <div class="section">
+        <h2 class="section-title">Emergency Contact / Contacto de Emergencia</h2>
+        <div class="form-row">
+            <div class="form-group">
+                <label>Name / Nombre</label>
+                <input type="text" name="name___nombre_16">
+            </div>
+            <div class="form-group">
+                <label>Relationship / Relación</label>
+                <input type="text" name="relationship___relacion_17">
+            </div>
+            <div class="form-group">
+                <label>Phone / Teléfono</label>
+                <input type="tel" name="phone___telefono_18">
+            </div>
+        </div>
+    </div>
+
+    <!-- Insurance -->
+    <div class="section">
+        <h2 class="section-title">Insurance / Seguro</h2>
+        <div class="form-row">
+            <div class="form-group">
+                <label>Insurance / Seguro</label>
+                <input type="text" name="insurance___seguro_19">
+            </div>
+            <div class="form-group">
+                <label>Name of Insured / Nombre del asegurado</label>
+                <input type="text" name="name_of_insured___nombre_del_asegurado_20">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group">
+                <label>Insured SSN / Seguro Social</label>
+                <input type="text" name="insured_social_security___seguro_social_21">
+            </div>
+            <div class="form-group">
+                <label>Insured DOB / Fecha de nacimiento</label>
+                <input type="date" name="insured_date_of_birth___fecha_de_nacimient_22">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group">
+                <label>Primary Doctor / Doctor de cabecera</label>
+                <input type="text" name="primary_doctor___doctor_de_cabecera_24">
+            </div>
+            <div class="form-group">
+                <label>Referred By / Referido por</label>
+                <input type="text" name="referred_by___referido_por_25">
+            </div>
+        </div>
+    </div>
+
+    <!-- Signature 1 -->
+    <div class="section">
+        <div class="signature-area">
+            <div class="sig-line">
+                <input type="text" class="sig-input" name="insured_signature___guardian_26">
+                <div class="sig-label">Patient Signature</div>
+            </div>
+            <div class="sig-line">
+                <input type="date" class="sig-input" name="date_27">
+                <div class="sig-label">Date</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== PAGE 2: MEDICAL HISTORY ========== -->
+    <div class="section page-break">
+        <h2 class="section-title">Current Medications / Medicamentos Actuales</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Prescription</th>
+                    <th>Dose/Frequency</th>
+                    <th>OTC/Vitamins</th>
+                    <th>Dose/Frequency</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><input type="text" name="prescription_medication___medicamento_rece_28"></td>
+                    <td><input type="text" name="dose___frequency___dosis_y_frecuencia_row_29"></td>
+                    <td><input type="text" name="otc__vitamins__supplements___vitaminas__su_30"></td>
+                    <td><input type="text" name="dose___frequency___dosis_y_frecuencia_row_31"></td>
+                </tr>
+                <tr>
+                    <td><input type="text" name="prescription_medication___medicamento_rece_32"></td>
+                    <td><input type="text" name="dose___frequency___dosis_y_frecuencia_row_33"></td>
+                    <td><input type="text" name="otc__vitamins__supplements___vitaminas__su_34"></td>
+                    <td><input type="text" name="dose___frequency___dosis_y_frecuencia_row_35"></td>
+                </tr>
+                <tr>
+                    <td><input type="text" name="prescription_medication___medicamento_rece_36"></td>
+                    <td><input type="text" name="dose___frequency___dosis_y_frecuencia_row_37"></td>
+                    <td><input type="text" name="otc__vitamins__supplements___vitaminas__su_38"></td>
+                    <td><input type="text" name="dose___frequency___dosis_y_frecuencia_row_39"></td>
+                </tr>
+                <tr>
+                    <td><input type="text" name="prescription_medication___medicamento_rece_40"></td>
+                    <td><input type="text" name="dose___frequency___dosis_y_frecuencia_row_41"></td>
+                    <td><input type="text" name="otc__vitamins__supplements___vitaminas__su_42"></td>
+                    <td><input type="text" name="dose___frequency___dosis_y_frecuencia_row_43"></td>
+                </tr>
+                <tr>
+                    <td><input type="text" name="prescription_medication___medicamento_rece_44"></td>
+                    <td><input type="text" name="dose___frequency___dosis_y_frecuencia_row_45"></td>
+                    <td><input type="text" name="otc__vitamins__supplements___vitaminas__su_46"></td>
+                    <td><input type="text" name="dose___frequency___dosis_y_frecuencia_row_47"></td>
+                </tr>
+                <tr>
+                    <td><input type="text" name="prescription_medication___medicamento_rece_48"></td>
+                    <td><input type="text" name="dose___frequency___dosis_y_frecuencia_row_49"></td>
+                    <td><input type="text" name="otc__vitamins__supplements___vitaminas__su_50"></td>
+                    <td><input type="text" name="dose___frequency___dosis_y_frecuencia_row_51"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Vital Signs -->
+    <div class="section">
+        <h2 class="section-title">Vital Signs / Signos Vitales</h2>
+        <div class="form-row">
+            <div class="form-group">
+                <label>Height / Estatura</label>
+                <input type="text" name="height___estatura_52">
+            </div>
+            <div class="form-group">
+                <label>Weight / Peso</label>
+                <input type="text" name="weight___peso_53">
+            </div>
+        </div>
+    </div>
+
+    <!-- Allergies -->
+    <div class="section">
+        <h2 class="section-title">Allergies / Alergias</h2>
+        <div class="checkbox-group">
+            <div class="checkbox-item">
+                <input type="checkbox" id="no_allergies" name="no_allergies___no_alergias_54">
+                <label for="no_allergies">No allergies</label>
+            </div>
+            <div class="checkbox-item">
+                <input type="checkbox" id="penicillin" name="penicillin___penicilina_55">
+                <label for="penicillin">Penicillin</label>
+            </div>
+            <div class="checkbox-item">
+                <input type="checkbox" id="sulfa" name="sulfa_56">
+                <label for="sulfa">Sulfa</label>
+            </div>
+            <div class="checkbox-item">
+                <input type="checkbox" id="aspirin" name="aspirin___aspirina_57">
+                <label for="aspirin">Aspirin</label>
+            </div>
+            <div class="checkbox-item">
+                <input type="checkbox" id="iodine" name="iodine___yodo_58">
+                <label for="iodine">Iodine</label>
+            </div>
+            <div class="checkbox-item">
+                <input type="checkbox" id="latex" name="latex_59">
+                <label for="latex">Latex</label>
+            </div>
+        </div>
+        <div class="form-row full">
+            <div class="form-group">
+                <label>Describe allergic reactions</label>
+                <input type="text" name="if_you_have_allergies__describe_reactions_63">
+            </div>
+        </div>
+    </div>
+
+    <!-- Medical Conditions -->
+    <div class="section">
+        <h2 class="section-title">Medical Conditions / Condiciones Médicas</h2>
+        <p class="text-muted mb-small">Check all that apply:</p>
+        <div class="checkbox-group">
+            <div class="checkbox-item"><input type="checkbox" id="acid_reflux" name="acid_reflux_64"><label for="acid_reflux">Acid reflux</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="cancer" name="cancer_97"><label for="cancer">Cancer</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="diabetes" name="diabetes_98"><label for="diabetes">Diabetes</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="heart_attack" name="heart_attack_71"><label for="heart_attack">Heart attack</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="high_bp" name="high_blood_pressure_95"><label for="high_bp">High BP</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="stroke" name="stroke___paralysis_73"><label for="stroke">Stroke</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="arthritis" name="arthritis_74"><label for="arthritis">Arthritis</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="asthma" name="asthma_79"><label for="asthma">Asthma</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="other_condition" name="other_88"><label for="other_condition">Other</label></div>
+        </div>
+        <div class="form-row full">
+            <div class="form-group">
+                <label>Other conditions or comments / Otras condiciones o comentarios</label>
+                <input type="text" name="other_conditions_or_comments___otras_condi_113">
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== PAGE 3: SURGERIES & SOCIAL HISTORY ========== -->
+    <div class="section page-break">
+        <h2 class="section-title">Previous Surgeries / Cirugías Previas</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Hospital</th>
+                    <th>Reason & Outcome</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><input type="text" name="date___fecha_row_130"></td>
+                    <td><input type="text" name="hospital_name___nombre_del_hospital_row_131"></td>
+                    <td><input type="text" name="reason_and_outcome___razon_y_resultado_row_132"></td>
+                </tr>
+                <tr>
+                    <td><input type="text" name="date___fecha_row_133"></td>
+                    <td><input type="text" name="hospital_name___nombre_del_hospital_row_134"></td>
+                    <td><input type="text" name="reason_and_outcome___razon_y_resultado_row_135"></td>
+                </tr>
+                <tr>
+                    <td><input type="text" name="date___fecha_row_136"></td>
+                    <td><input type="text" name="hospital_name___nombre_del_hospital_row_137"></td>
+                    <td><input type="text" name="reason_and_outcome___razon_y_resultado_row_138"></td>
+                </tr>
+                <tr>
+                    <td><input type="text" name="date___fecha_row_139"></td>
+                    <td><input type="text" name="hospital_name___nombre_del_hospital_row_140"></td>
+                    <td><input type="text" name="reason_and_outcome___razon_y_resultado_row_141"></td>
+                </tr>
+                <tr>
+                    <td><input type="text" name="date___fecha_row_142"></td>
+                    <td><input type="text" name="hospital_name___nombre_del_hospital_row_143"></td>
+                    <td><input type="text" name="reason_and_outcome___razon_y_resultado_row_144"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Social History -->
+    <div class="section">
+        <h2 class="section-title">Social History / Historia Social</h2>
+        <div class="form-row full">
+            <div class="form-group">
+                <label>Caffeine Use</label>
+                <input type="text" name="caffeine___cafeina_126">
+            </div>
+        </div>
+        <div class="form-row full">
+            <div class="form-group">
+                <label>Tobacco / Tabaco</label>
+                <input type="text" name="tobacco___tabaco_127">
+            </div>
+        </div>
+        <div class="form-row full">
+            <div class="form-group">
+                <label>Alcohol Use / Uso de alcohol</label>
+                <input type="text" name="alcohol_use___uso_de_alcohol_128">
+            </div>
+        </div>
+        <div class="form-row full">
+            <div class="form-group">
+                <label>Drug Use</label>
+                <input type="text" name="drugs___drogas__cocaine__marijuana__speed_129">
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== PAGE 4: ACKNOWLEDGMENTS ========== -->
+    <div class="section page-break">
+        <h2 class="section-title">Patient Information & Restrictions / Información del Paciente y Restricciones</h2>
+        <div class="form-row">
+            <div class="form-group">
+                <label>Patient Name / Nombre del paciente</label>
+                <input type="text" name="patient_name___nombre_del_paciente_145">
+            </div>
+            <div class="form-group">
+                <label>Date / Fecha</label>
+                <input type="date" name="date___fecha_146">
+            </div>
+        </div>
+        <div class="form-row full">
+            <div class="form-group">
+                <label>Restrictions Requested</label>
+                <input type="text" name="restrictions_requested__if_any___restricci_147">
+            </div>
+        </div>
+    </div>
+
+    <!-- Acknowledgment -->
+    <div class="section">
+        <h2 class="section-title">Patient Acknowledgment / Reconocimiento del Paciente</h2>
+        <div class="info-box">
+            <p><strong>I certify that I have provided accurate information on this form.</strong> I understand the information will be used for proper medical care and treatment. I have read and understood the privacy practices and consent to the use of my health information as described.</p>
+        </div>
+        <div class="signature-area">
+            <div class="sig-line">
+                <input type="text" class="sig-input" name="patient_signature___firma_del_paciente_148">
+                <div class="sig-label">Patient Signature</div>
+            </div>
+            <div class="sig-line">
+                <input type="date" class="sig-input" name="date___fecha_149">
+                <div class="sig-label">Date</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- HIPAA -->
+    <div class="section">
+        <h2 class="section-title">HIPAA Privacy Notice</h2>
+        <div class="info-box">
+            <p><strong>I acknowledge receiving the Notice of Privacy Practices.</strong> I understand my health information may be used for treatment, payment, and operations. I have the right to request restrictions on use and disclosure of my information.</p>
+        </div>
+        <div class="signature-area">
+            <div class="sig-line">
+                <input type="text" class="sig-input" name="patient_name___nombre_del_paciente_155">
+                <div class="sig-label">Patient Name</div>
+            </div>
+            <div class="sig-line">
+                <input type="text" class="sig-input" name="signature___firma_157">
+                <div class="sig-label">Patient Signature</div>
+            </div>
+        </div>
+        <div class="form-row full mt-small">
+            <div class="form-group">
+                <label>Date / Fecha</label>
+                <input type="date" name="date___fecha_156">
+            </div>
+        </div>
+    </div>
+
+    <!-- Buttons -->
+    <div class="button-group">
+        <button class="btn-primary" onclick="window.print()">Print PDF</button>
+        <button class="btn-primary" onclick="document.querySelectorAll('input').forEach(el => el.value = '')">Clear Form</button>
+    </div>
+
+</div>
+
+</body>
+</html>
