@@ -470,18 +470,100 @@ def build():
         rows=4,
     )
 
-    # HIPAA / Consent Acknowledgement
-    p.draw_section("Patient Consent & Privacy Acknowledgement",
-                   "Consentimiento del Paciente y Aviso de Privacidad")
+    # ===== New Patient Consent and Authorization Form =====
+    p.draw_section("New Patient Consent and Authorization Form",
+                   "Formulario de Consentimiento y Autorización")
+    p.draw_field_row([
+        ("Patient Name", "Nombre del paciente", "text"),
+        ("Date", "Fecha", "date"),
+    ])
     p.draw_paragraph(
-        "I acknowledge receipt of the Notice of Privacy Practices and consent to the use and disclosure of my health information for treatment, payment, and healthcare operations. As a patient or legal guardian, I agree to pay for all services rendered and verify that the information on this form is true and correct."
-    )
-    p.draw_paragraph(
-        "Reconozco haber recibido el Aviso de Prácticas de Privacidad y consiento al uso y divulgación de mi información médica para tratamiento, pago y operaciones de atención médica. Como paciente o tutor legal, acepto pagar todos los servicios prestados y verifico que la información de este formulario es verdadera y correcta.",
-        font=DISPLAY_ITALIC,
+        "Acknowledgment: I have been presented with the option to read and take a copy of this provider's Notice of Privacy Policies, detailing how my information may be used and disclosed as permitted under federal and state law. I understand the contents of the notice, and I request the following restriction(s) concerning my personal information:"
     )
     p.draw_full_field("Restrictions requested, if any",
                       "Restricciones solicitadas, si hay")
+    p.draw_paragraph(
+        "As a patient or as legal guardian of a minor patient, I agree to pay for all services rendered. I verify that the information contained in this form is true and correct. I hereby assign my insurance benefits to be paid directly to Culver City Surgical. I am financially responsible for non-covered services."
+    )
+    p.draw_paragraph(
+        "I understand that as part of my health care, Culver City Surgical originates and maintains paper and/or electronic records describing my health history, symptoms, examination and test results, diagnoses, treatment, and any plans for future care or treatment. This information serves as a basis for planning my care, communication among health professionals, billing, payer verification, and routine healthcare operations."
+    )
+    p.draw_paragraph(
+        "I understand and have been provided with a Notice of Privacy Policies that provides a more complete description of information uses and disclosures. I understand that I have the right to review the notice prior to signing this consent, the right to object to the use of my health information for directory purposes, and the right to request restrictions as to how my health information may be used or disclosed to carry out treatment, payment, or health care operations."
+    )
+    p.draw_paragraph(
+        "I authorize Culver City Surgical to disclose my health information and medical records to a specialist or other physician as part of my treatment and to my attorney if treating on a medical lien."
+    )
+    p.draw_paragraph(
+        "We will disclose this information to referring physicians and to health care providers that our office refers to for additional medical diagnosis or treatment, including pharmacies for prescriptions. Patient verbal approval will be obtained prior to release of information to health care providers. Medical insurance representatives will have access to patient information as permitted by the patient's contractual arrangement with their medical insurance policies."
+    )
+    p.draw_paragraph(
+        "We will use patient information for billing. Necessary information to satisfy the insurance provider's request to support medical payments will be shared with the medical insurance company."
+    )
+    p.draw_paragraph(
+        "Further, I permit a copy of this authorization to be used in place of the original, and request payment of medical insurance benefits either to myself or to the party who accepts assignment. Regulations pertaining to medical assignment of benefits apply. I fully understand and accept the terms of this consent."
+    )
+    p.draw_signature_pair()
+
+    # ===== Video/Audio Surveillance Consent =====
+    p.draw_section("Video/Audio Surveillance Consent for Security Purposes",
+                   "Consentimiento de Vigilancia para Seguridad")
+    p.draw_field_row([
+        ("Patient Initials", "Iniciales del paciente", "text"),
+    ])
+    p.draw_paragraph(
+        "I consent to the presence of audio and video surveillance monitoring for safety and security. HIPAA-compliant camera placement may include the waiting/reception area, hallways, medication cabinet, hallway in PACU, and the OR door. All footage is for security purposes."
+    )
+    p.draw_field_row([
+        ("Patient Name", "Nombre del paciente", "text"),
+        ("Date", "Fecha", "date"),
+    ])
+    # Two signatures: patient + witness
+    p.check_page_break(40)
+    gap = 20
+    w = (CONTENT_W - gap) / 2
+    name1 = p.new_field_name("surveillance_patient_sig")
+    p.c.acroForm.textfield(
+        name=name1, tooltip="Patient Signature",
+        x=MARGIN_L, y=p.y - 18, width=w, height=18,
+        borderStyle='underlined', borderColor=NEUTRAL_DARKEST,
+        fillColor=white, forceBorder=True, fontSize=10,
+    )
+    p.c.setFillColor(NEUTRAL_DARK)
+    p.c.setFont(BODY_FONT, 7)
+    p.c.drawCentredString(MARGIN_L + w / 2, p.y - 28,
+                          "Patient Signature / Firma del paciente")
+    x2 = MARGIN_L + w + gap
+    name2 = p.new_field_name("surveillance_witness_sig")
+    p.c.acroForm.textfield(
+        name=name2, tooltip="Witness Signature",
+        x=x2, y=p.y - 18, width=w, height=18,
+        borderStyle='underlined', borderColor=NEUTRAL_DARKEST,
+        fillColor=white, forceBorder=True, fontSize=10,
+    )
+    p.c.drawCentredString(x2 + w / 2, p.y - 28,
+                          "Witness Signature / Firma del testigo")
+    p.y -= 40
+
+    # ===== Authorization and Consent for Medical Photographs =====
+    p.draw_section("Authorization and Consent for Medical Photographs, Imaging, and/or Videos",
+                   "Autorización para Fotografías, Imágenes y/o Videos Médicos")
+    p.draw_paragraph(
+        "Instructions: This consent document has been prepared to inform you about permission to take photographs, imaging, and/or videos and to use these images for the purposes defined within this consent. Please read this information carefully and completely. After reviewing, sign the consent as proposed by your surgeon or physician."
+    )
+    p.draw_paragraph(
+        "Introduction: Medical photographs, imaging, and/or videos may be taken before, during, and after a surgical procedure and/or treatment. Consent is required to take such images. The photos help illustrate pre-operative conditions and evaluate the results of operative interventions. Photographs are also used to track progress of non-operative interventions. All patients are routinely photographed. When possible, identifying features are excluded from photographs."
+    )
+    p.draw_paragraph(
+        "1. Consent to take medical photographs, imaging, and/or videos. I authorize the use of preoperative, intra-operative, and postoperative photographs, imaging, and/or videos."
+    )
+    p.draw_paragraph(
+        "2. Consent for release of medical photographs, imaging, and/or videos. I authorize the use of preoperative, intra-operative, and postoperative photographs, imaging, and/or videos for professional medical purposes deemed appropriate, including but not limited to public or commercial television, social media, print ads, and medical or patient education. I understand that I will not be entitled to monetary compensation or any other consideration as a result of any use of these images and/or my interview."
+    )
+    p.draw_field_row([
+        ("Patient Name", "Nombre del paciente", "text"),
+        ("Date", "Fecha", "date"),
+    ])
     p.draw_signature_pair()
 
     p.save()

@@ -1087,65 +1087,110 @@
         </div>
     </div>
 
-    <!-- ========== PAGE 4: ACKNOWLEDGMENTS ========== -->
+    <!-- ========== PAGE 4: NEW PATIENT CONSENT & AUTHORIZATION ========== -->
     <div class="section page-break">
-        <h2 class="section-title">Patient Information & Restrictions / Información del Paciente y Restricciones</h2>
+        <h2 class="section-title">New Patient Consent and Authorization Form / Formulario de Consentimiento y Autorización del Nuevo Paciente</h2>
         <div class="form-row">
             <div class="form-group">
                 <label>Patient Name / Nombre del paciente</label>
-                <input type="text" name="patient_name___nombre_del_paciente_145">
+                <input type="text" name="consent_patient_name_145">
             </div>
             <div class="form-group">
                 <label>Date / Fecha</label>
-                <input type="date" name="date___fecha_146">
+                <input type="date" name="consent_date_146">
             </div>
+        </div>
+        <div class="info-box">
+            <p><strong>Acknowledgment:</strong> I have been presented with the option to read and take a copy of this provider's Notice of Privacy Policies, detailing how my information may be used and disclosed as permitted under federal and state law. I understand the contents of the notice, and I request the following restriction(s) concerning my personal information:</p>
         </div>
         <div class="form-row full">
             <div class="form-group">
-                <label>Restrictions Requested</label>
-                <input type="text" name="restrictions_requested__if_any___restricci_147">
+                <label>Restrictions requested, if any / Restricciones solicitadas, si hay</label>
+                <input type="text" name="restrictions_requested_147">
+            </div>
+        </div>
+        <div class="info-box">
+            <p>As a patient or as legal guardian of a minor patient, I agree to pay for all services rendered. I verify that the information contained in this form is true and correct. I hereby assign my insurance benefits to be paid directly to Culver City Surgical. I am financially responsible for non-covered services.</p>
+            <p style="margin-top:6px;">I understand that as part of my health care, Culver City Surgical originates and maintains paper and/or electronic records describing my health history, symptoms, examination and test results, diagnoses, treatment, and any plans for future care or treatment. This information serves as a basis for planning my care, communication among health professionals, billing, payer verification, and routine healthcare operations.</p>
+            <p style="margin-top:6px;">I understand and have been provided with a Notice of Privacy Policies that provides a more complete description of information uses and disclosures. I understand that I have the right to review the notice prior to signing this consent, the right to object to the use of my health information for directory purposes, and the right to request restrictions as to how my health information may be used or disclosed to carry out treatment, payment, or health care operations.</p>
+            <p style="margin-top:6px;">I authorize Culver City Surgical to disclose my health information and medical records to a specialist or other physician as part of my treatment and to my attorney if treating on a medical lien.</p>
+            <p style="margin-top:6px;">We will disclose this information to referring physicians and to health care providers that our office refers to for additional medical diagnosis or treatment, including pharmacies for prescriptions. Patient verbal approval will be obtained prior to release of information to health care providers. Medical insurance representatives will have access to patient information as permitted by the patient's contractual arrangement with their medical insurance policies.</p>
+            <p style="margin-top:6px;">We will use patient information for billing. Necessary information to satisfy the insurance provider's request to support medical payments will be shared with the medical insurance company.</p>
+            <p style="margin-top:6px;">Further, I permit a copy of this authorization to be used in place of the original, and request payment of medical insurance benefits either to myself or to the party who accepts assignment. Regulations pertaining to medical assignment of benefits apply. I fully understand and accept the terms of this consent.</p>
+        </div>
+        <div class="signature-area">
+            <div class="sig-line">
+                <input type="text" class="sig-input" name="consent_signature_148">
+                <div class="sig-label">Patient Signature / Firma del paciente</div>
+            </div>
+            <div class="sig-line">
+                <input type="date" class="sig-input" name="consent_signature_date_149">
+                <div class="sig-label">Date / Fecha</div>
             </div>
         </div>
     </div>
 
-    <!-- Acknowledgment -->
-    <div class="section">
-        <h2 class="section-title">Patient Acknowledgment / Reconocimiento del Paciente</h2>
+    <!-- ========== PAGE 5: VIDEO/AUDIO SURVEILLANCE CONSENT ========== -->
+    <div class="section page-break">
+        <h2 class="section-title">Video/Audio Surveillance Consent for Security Purposes / Consentimiento de Vigilancia Audio/Video para Fines de Seguridad</h2>
+        <div class="form-row">
+            <div class="form-group">
+                <label>Patient Initials / Iniciales del paciente</label>
+                <input type="text" name="surveillance_initials_150">
+            </div>
+        </div>
         <div class="info-box">
-            <p><strong>I certify that I have provided accurate information on this form.</strong> I understand the information will be used for proper medical care and treatment. I have read and understood the privacy practices and consent to the use of my health information as described.</p>
+            <p>I consent to the presence of audio and video surveillance monitoring for safety and security. HIPAA-compliant camera placement may include the waiting/reception area, hallways, medication cabinet, hallway in PACU, and the OR door. All footage is for security purposes.</p>
         </div>
-        <div class="signature-area">
-            <div class="sig-line">
-                <input type="text" class="sig-input" name="patient_signature___firma_del_paciente_148">
-                <div class="sig-label">Patient Signature</div>
+        <div class="form-row">
+            <div class="form-group">
+                <label>Patient Name / Nombre del paciente</label>
+                <input type="text" name="surveillance_patient_name_151">
             </div>
-            <div class="sig-line">
-                <input type="date" class="sig-input" name="date___fecha_149">
-                <div class="sig-label">Date</div>
-            </div>
-        </div>
-    </div>
-
-    <!-- HIPAA -->
-    <div class="section">
-        <h2 class="section-title">HIPAA Privacy Notice</h2>
-        <div class="info-box">
-            <p><strong>I acknowledge receiving the Notice of Privacy Practices.</strong> I understand my health information may be used for treatment, payment, and operations. I have the right to request restrictions on use and disclosure of my information.</p>
-        </div>
-        <div class="signature-area">
-            <div class="sig-line">
-                <input type="text" class="sig-input" name="patient_name___nombre_del_paciente_155">
-                <div class="sig-label">Patient Name</div>
-            </div>
-            <div class="sig-line">
-                <input type="text" class="sig-input" name="signature___firma_157">
-                <div class="sig-label">Patient Signature</div>
-            </div>
-        </div>
-        <div class="form-row full mt-small">
             <div class="form-group">
                 <label>Date / Fecha</label>
-                <input type="date" name="date___fecha_156">
+                <input type="date" name="surveillance_date_152">
+            </div>
+        </div>
+        <div class="signature-area">
+            <div class="sig-line">
+                <input type="text" class="sig-input" name="surveillance_patient_sig_153">
+                <div class="sig-label">Patient Signature / Firma del paciente</div>
+            </div>
+            <div class="sig-line">
+                <input type="text" class="sig-input" name="surveillance_witness_sig_154">
+                <div class="sig-label">Witness Signature / Firma del testigo</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== PAGE 6: MEDICAL PHOTOGRAPHS CONSENT ========== -->
+    <div class="section page-break">
+        <h2 class="section-title">Authorization and Consent for Medical Photographs, Imaging, and/or Videos / Autorización y Consentimiento para Fotografías, Imágenes y/o Videos Médicos</h2>
+        <div class="info-box">
+            <p><strong>Instructions:</strong> This consent document has been prepared to inform you about permission to take photographs, imaging, and/or videos and to use these images for the purposes defined within this consent. Please read this information carefully and completely. After reviewing, sign the consent as proposed by your surgeon or physician.</p>
+            <p style="margin-top:6px;"><strong>Introduction:</strong> Medical photographs, imaging, and/or videos may be taken before, during, and after a surgical procedure and/or treatment. Consent is required to take such images. The photos help illustrate pre-operative conditions and evaluate the results of operative interventions. Photographs are also used to track progress of non-operative interventions. All patients are routinely photographed. When possible, identifying features are excluded from photographs.</p>
+            <p style="margin-top:6px;"><strong>1. Consent to take medical photographs, imaging, and/or videos.</strong> I authorize the use of preoperative, intra-operative, and postoperative photographs, imaging, and/or videos.</p>
+            <p style="margin-top:6px;"><strong>2. Consent for release of medical photographs, imaging, and/or videos.</strong> I authorize the use of preoperative, intra-operative, and postoperative photographs, imaging, and/or videos for professional medical purposes deemed appropriate, including but not limited to public or commercial television, social media, print ads, and medical or patient education. I understand that I will not be entitled to monetary compensation or any other consideration as a result of any use of these images and/or my interview.</p>
+        </div>
+        <div class="form-row">
+            <div class="form-group">
+                <label>Patient Name / Nombre del paciente</label>
+                <input type="text" name="photos_patient_name_155">
+            </div>
+            <div class="form-group">
+                <label>Date / Fecha</label>
+                <input type="date" name="photos_date_156">
+            </div>
+        </div>
+        <div class="signature-area">
+            <div class="sig-line">
+                <input type="text" class="sig-input" name="photos_signature_157">
+                <div class="sig-label">Signature / Firma</div>
+            </div>
+            <div class="sig-line">
+                <input type="text" class="sig-input" name="photos_signature_extra_158">
+                <div class="sig-label">&nbsp;</div>
             </div>
         </div>
     </div>
